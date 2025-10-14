@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Financeira - Todas as Cartas de Crédito</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">GLR</a>
+            <nav>
+                <a href="index.html#sobre-nos">A Empresa</a>
+                <a href="cartas.html">Cartas de Crédito</a>
+                <a href="index.html#como-funciona">Como Funciona</a>
+                <a href="index.html#vantagens">Vantagens</a>
+                <a href="login.html" class="cta-button-small">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="cartas-page">
+            <div class="container">
+                <h2>Encontre a Carta de Crédito Perfeita</h2>
+                <p class="section-subtitle">Utilize nossos filtros avançados para encontrar a oportunidade ideal para realizar seu sonho.</p>
+
+                <div class="filtros filtros-avancados">
+                    <div class="filtro-grupo">
+                        <label for="filtro-tipo-page">Tipo de Bem:</label>
+                        <select id="filtro-tipo-page">
+                            <option value="todos">Todos</option>
+                            <option value="imovel">Imóvel</option>
+                            <option value="veiculo">Veículo</option>
+                            <option value="servico">Serviço</option>
+                        </select>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="filtro-valor-page">Valor do Crédito:</label>
+                        <input type="range" id="filtro-valor-page" min="10000" max="2000000" step="10000" value="2000000">
+                        <span id="valor-selecionado">Até R$ 2.000.000</span>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="filtro-parcela-page">Valor da Parcela:</label>
+                        <input type="range" id="filtro-parcela-page" min="100" max="10000" step="100" value="10000">
+                        <span id="parcela-selecionada">Até R$ 10.000</span>
+                    </div>
+                     <div class="filtro-grupo">
+                        <label for="filtro-ordenar">Ordenar por:</label>
+                        <select id="filtro-ordenar">
+                            <option value="maior-credito">Maior Crédito</option>
+                            <option value="menor-credito">Menor Crédito</option>
+                            <option value="menor-entrada">Menor Entrada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="cartas-page-grid">
+                    </div>
+                
+                <p id="nenhuma-carta-page" class="hidden">Nenhuma carta de crédito encontrada com os filtros selecionados.</p>
+            </div>
+        </section>
+
+        <section id="parceiros" class="animate-on-scroll">
+            <div class="container">
+                <h2>Área de Parceiros</h2>
+                <p class="section-subtitle">Acesse a lista completa de nossas cartas disponíveis em formato PDF.</p>
+                <div class="parceiros-content">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <h3>Download da Tabela Completa</h3>
+                    <p>Mantenha-se atualizado com todas as nossas oportunidades. Clique no botão abaixo para gerar e baixar o PDF.</p>
+                    <button id="btn-download-pdf" class="cta-button">Baixar PDF de Cartas</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <a href="index.html" class="logo">GLR</a>
+            <p>&copy; 2025 Sua Financeira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/cartas.js"></script>
+    
+</body>
+</html>
