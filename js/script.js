@@ -7,31 +7,70 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Opcional: para a animação acontecer só uma vez
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.15
         });
         elementsToAnimate.forEach(element => {
             observer.observe(element);
         });
     }
 
+    // --- HEADER DINÂMICO ---
+    const header = document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
-    // --- LÓGICA PARA OS FILTROS DAS CARTAS DE CRÉDITO ---
-    const filtroTipo = document.getElementById('filtro-tipo');
-    const filtroValor = document.getElementById('filtro-valor');
-    const gridCartas = document.getElementById('cartas-disponiveis-grid');
-    const mensagemNenhumaCarta = document.getElementById('nenhuma-carta');
+    // --- LÓGICA PARA O ACORDEÃO (FAQ) ---
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            const pergunta = item.querySelector('.faq-pergunta');
+            const resposta = item.querySelector('.faq-resposta');
+
+            pergunta.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-resposta').style.maxHeight = '0px';
+                    }
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    resposta.style.maxHeight = resposta.scrollHeight + 'px';
+                } else {
+                    item.classList.remove('active');
+                    resposta.style.maxHeight = '0px';
+                }
+            });
+        });
+    }
+
+    // --- LÓGICA PARA OS FILTROS DA PÁGINA INICIAL ---
+    const filtroTipoIndex = document.getElementById('filtro-tipo');
+    const filtroValorIndex = document.getElementById('filtro-valor');
+    const gridCartasIndex = document.getElementById('cartas-disponiveis-grid');
     
-    // Verifica se os elementos de filtro existem na página antes de adicionar os listeners
-    if (filtroTipo && filtroValor && gridCartas) {
-        const todasAsCartas = gridCartas.querySelectorAll('.carta-card');
+    // VERIFICA SE ESTAMOS NA PÁGINA INICIAL (pela existência do grid específico)
+    if (filtroTipoIndex && filtroValorIndex && gridCartasIndex) {
+        const todasAsCartas = gridCartasIndex.querySelectorAll('.carta-card');
+        const mensagemNenhumaCarta = document.getElementById('nenhuma-carta');
 
-        function aplicarFiltros() {
-            const tipoSelecionado = filtroTipo.value;
-            const valorSelecionado = filtroValor.value;
+        function aplicarFiltrosIndex() {
+            const tipoSelecionado = filtroTipoIndex.value;
+            const valorSelecionado = filtroValorIndex.value;
             let cartasVisiveis = 0;
 
             todasAsCartas.forEach(carta => {
@@ -44,17 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (valorSelecionado === 'todos') {
                     valorMatch = true;
                 } else {
-                    const [min, max] = valorSelecionado.split('-').map(Number);
-                    if (valorDaCarta >= min && valorDaCarta <= max) {
+                    const [min, maxStr] = valorSelecionado.split('-');
+                    const max = maxStr === '' ? Infinity : Number(maxStr);
+                    if (valorDaCarta >= Number(min) && valorDaCarta <= max) {
                         valorMatch = true;
                     }
                 }
                 
                 if (tipoMatch && valorMatch) {
-                    carta.classList.remove('hidden');
+                    carta.style.display = 'flex';
                     cartasVisiveis++;
                 } else {
-                    carta.classList.add('hidden');
+                    carta.style.display = 'none';
                 }
             });
 
@@ -67,29 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        filtroTipo.addEventListener('change', aplicarFiltros);
-        filtroValor.addEventListener('change', aplicarFiltros);
+        filtroTipoIndex.addEventListener('change', aplicarFiltrosIndex);
+        filtroValorIndex.addEventListener('change', aplicarFiltrosIndex);
 
-        // Garante que o estado inicial esteja correto
-        aplicarFiltros();
-    }
-    
-    // --- LÓGICA PARA O FORMULÁRIO DE LOGIN (FRONT-END) ---
-    // Nota: Uma funcionalidade de login completa requer um backend para validar os usuários.
-    // Este código apenas simula a submissão do formulário.
-    const loginForm = document.getElementById('login-form');
-    if(loginForm) {
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio real do formulário
-            const email = document.getElementById('email').value;
-            
-            // Aqui você adicionaria a lógica para enviar os dados para um servidor (backend)
-            // e aguardar a resposta para autenticar o usuário.
-            
-            alert(`Tentativa de login com o email: ${email}. Funcionalidade de backend não implementada.`);
-            
-            // Exemplo: Redirecionar para uma página de painel após login (simulação)
-            // window.location.href = '/dashboard.html'; 
-        });
+        // Garante que o estado inicial esteja correto ao carregar a página
+        aplicarFiltrosIndex();
     }
 });

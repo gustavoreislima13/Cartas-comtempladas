@@ -10,10 +10,10 @@
 <body>
     <header>
         <div class="container">
-            <h1 class="logo">GLR</h1>
+            <a href="index.html" class="logo">GLR</a>
             <nav>
                 <a href="#sobre-nos">A Empresa</a>
-                <a href="#cartas-disponiveis">Cartas de Crédito</a>
+                <a href="cartas.html">Cartas de Crédito</a>
                 <a href="#como-funciona">Como Funciona</a>
                 <a href="#vantagens">Vantagens</a>
                 <a href="login.html" class="cta-button-small">Login</a>
@@ -53,28 +53,28 @@
             <div class="container">
                 <h2>Como Funciona a Operação de Cartas Contempladas</h2>
                 <div class="timeline">
-                    <div class="timeline-item">
+                    <div class="timeline-item" data-step="1">
                         <div class="timeline-content">
-                            <h3>1. Análise e Escolha</h3>
-                            <p>O primeiro passo é entender seu objetivo. Nossa equipe analisa suas necessidades para encontrar uma carta de crédito já contemplada no valor exato que você precisa, seja para um imóvel, carro ou outro bem.</p>
+                            <h3>Análise e Escolha</h3>
+                            <p>O primeiro passo é entender seu objetivo. Nossa equipe analisa suas necessidades para encontrar uma carta de crédito já contemplada no valor exato que você precisa.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" data-step="2">
                         <div class="timeline-content">
-                            <h3>2. Verificação e Segurança</h3>
-                            <p>Realizamos uma checagem completa da carta junto à administradora do consórcio. Verificamos a autenticidade, o valor do crédito, o saldo devedor e garantimos que não há nenhuma pendência. A segurança do cliente é nossa prioridade.</p>
+                            <h3>Verificação e Segurança</h3>
+                            <p>Realizamos uma checagem completa da carta junto à administradora do consórcio, garantindo a autenticidade e a segurança da operação.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" data-step="3">
                         <div class="timeline-content">
-                            <h3>3. Transferência de Titularidade</h3>
-                            <p>Cuidamos de todo o processo burocrático para transferir a titularidade da carta para o seu nome. Este processo é formalizado em contrato e acompanhado de perto pela administradora, garantindo total legalidade.</p>
+                            <h3>Transferência de Titularidade</h3>
+                            <p>Cuidamos de todo o processo burocrático para transferir a titularidade da carta para o seu nome de forma legal e transparente.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" data-step="4">
                         <div class="timeline-content">
-                            <h3>4. Liberação e Compra</h3>
-                            <p>Com a carta em seu nome, o crédito está liberado! Você pode usar o valor para comprar seu bem à vista, o que lhe confere um enorme poder de negociação para conseguir descontos e fazer o melhor negócio possível.</p>
+                            <h3>Liberação e Compra</h3>
+                            <p>Com a carta em seu nome, o crédito é liberado para você comprar seu bem à vista, o que lhe dá um enorme poder de negociação.</p>
                         </div>
                     </div>
                 </div>
@@ -88,17 +88,17 @@
                     <div class="vantagem-card">
                         <i class="fa-solid fa-rocket"></i>
                         <h3>Agilidade e Rapidez</h3>
-                        <p>Esqueça a incerteza dos sorteios ou a necessidade de dar lances altos. Com a carta contemplada, o acesso ao crédito é praticamente imediato após a transferência.</p>
+                        <p>Esqueça a incerteza dos sorteios. Com a carta contemplada, o acesso ao crédito é praticamente imediato após a transferência.</p>
                     </div>
                     <div class="vantagem-card">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
                         <h3>Economia Inteligente</h3>
-                        <p>Diferente dos financiamentos, o consórcio não tem juros, apenas uma taxa de administração muito menor. Isso resulta em uma economia significativa ao final do plano.</p>
+                        <p>Diferente dos financiamentos, o consórcio não tem juros, apenas uma taxa de administração muito menor, gerando grande economia.</p>
                     </div>
                     <div class="vantagem-card">
                         <i class="fa-solid fa-shield-halved"></i>
                         <h3>Segurança Jurídica Total</h3>
-                        <p>Nossa operação é 100% amparada pela Lei dos Consórcios. Todo o processo é documentado e validado pela administradora, oferecendo total segurança.</p>
+                        <p>Nossa operação é 100% amparada pela Lei dos Consórcios. Todo o processo é validado pela administradora, oferecendo total segurança.</p>
                     </div>
                 </div>
             </div>
@@ -125,58 +125,34 @@
                             <option value="0-100000">Até R$100.000</option>
                             <option value="100001-200000">R$100.001 a R$200.000</option>
                             <option value="200001-500000">R$200.001 a R$500.000</option>
-                            <option value="500001-1000000">Acima de R$500.000</option>
+                            <option value="500001-">Acima de R$500.000</option>
                         </select>
                     </div>
                 </div>
 
                 <div id="cartas-disponiveis-grid">
                     <div class="carta-card" data-tipo="veiculo" data-valor="85000">
-                        <div class="carta-card-header">
-                            <i class="fa-solid fa-car"></i>
-                            <h3>Veículo</h3>
-                        </div>
+                        <div class="carta-card-header"><i class="fa-solid fa-car"></i><h3>Veículo</h3></div>
                         <p class="credito">Crédito: R$ 85.000,00</p>
-                        <div class="carta-card-body">
-                            <p><strong>Entrada:</strong> R$ 25.000,00</p>
-                            <p><strong>Parcelas:</strong> 72x R$ 1.150,00</p>
-                        </div>
+                        <div class="carta-card-body"><p><strong>Entrada:</strong> R$ 25.000,00</p><p><strong>Parcelas:</strong> 72x R$ 1.150,00</p></div>
                         <a href="#contato" class="cta-button">Tenho Interesse</a>
                     </div>
                     <div class="carta-card" data-tipo="imovel" data-valor="350000">
-                        <div class="carta-card-header">
-                            <i class="fa-solid fa-house"></i>
-                            <h3>Imóvel</h3>
-                        </div>
+                        <div class="carta-card-header"><i class="fa-solid fa-house"></i><h3>Imóvel</h3></div>
                         <p class="credito">Crédito: R$ 350.000,00</p>
-                        <div class="carta-card-body">
-                            <p><strong>Entrada:</strong> R$ 70.000,00</p>
-                            <p><strong>Parcelas:</strong> 180x R$ 2.400,00</p>
-                        </div>
+                        <div class="carta-card-body"><p><strong>Entrada:</strong> R$ 70.000,00</p><p><strong>Parcelas:</strong> 180x R$ 2.400,00</p></div>
                         <a href="#contato" class="cta-button">Tenho Interesse</a>
                     </div>
                     <div class="carta-card" data-tipo="imovel" data-valor="600000">
-                        <div class="carta-card-header">
-                            <i class="fa-solid fa-house"></i>
-                            <h3>Imóvel</h3>
-                        </div>
+                        <div class="carta-card-header"><i class="fa-solid fa-house"></i><h3>Imóvel</h3></div>
                         <p class="credito">Crédito: R$ 600.000,00</p>
-                        <div class="carta-card-body">
-                            <p><strong>Entrada:</strong> R$ 120.000,00</p>
-                            <p><strong>Parcelas:</strong> 200x R$ 3.950,00</p>
-                        </div>
+                        <div class="carta-card-body"><p><strong>Entrada:</strong> R$ 120.000,00</p><p><strong>Parcelas:</strong> 200x R$ 3.950,00</p></div>
                         <a href="#contato" class="cta-button">Tenho Interesse</a>
                     </div>
                      <div class="carta-card" data-tipo="veiculo" data-valor="150000">
-                        <div class="carta-card-header">
-                            <i class="fa-solid fa-car"></i>
-                            <h3>Veículo</h3>
-                        </div>
+                        <div class="carta-card-header"><i class="fa-solid fa-car"></i><h3>Veículo</h3></div>
                         <p class="credito">Crédito: R$ 150.000,00</p>
-                        <div class="carta-card-body">
-                            <p><strong>Entrada:</strong> R$ 45.000,00</p>
-                            <p><strong>Parcelas:</strong> 80x R$ 1.980,00</p>
-                        </div>
+                        <div class="carta-card-body"><p><strong>Entrada:</strong> R$ 45.000,00</p><p><strong>Parcelas:</strong> 80x R$ 1.980,00</p></div>
                         <a href="#contato" class="cta-button">Tenho Interesse</a>
                     </div>
                 </div>
@@ -189,21 +165,21 @@
                 <h2>O que nossos clientes dizem</h2>
                 <div class="depoimentos-grid">
                     <div class="depoimento-card">
-                        <img src="https://via.placeholder.com/100x100?text=Cliente+1" alt="Foto do Cliente">
+                        <img src="img/1.png" alt="Foto do Cliente">
                         <p class="depoimento-texto">"O processo foi muito mais rápido do que eu imaginava. Em menos de 15 dias, eu estava com o crédito na mão para comprar meu apartamento. Recomendo demais!"</p>
-                        <h4 class="depoimento-nome">Juliana Silva</h4>
+                        <h4 class="depoimento-nome">Anselmo de Souza</h4>
                         <p class="depoimento-objetivo">Conquistou: Imóvel</p>
                     </div>
                     <div class="depoimento-card">
-                        <img src="https://via.placeholder.com/100x100?text=Cliente+2" alt="Foto do Cliente">
-                        <p class="depoimento-texto">"A assessoria do Ricardo foi fundamental. Ele me explicou cada detalhe e me deu a segurança que eu precisava para fechar negócio. Consegui meu carro novo sem juros!"</p>
-                        <h4 class="depoimento-nome">Marcos Andrade</h4>
+                        <img src="img/2.png" alt="Foto do Cliente">
+                        <p class="depoimento-texto">"A assessoria do Gustavo foi fundamental. Ele me explicou cada detalhe e me deu a segurança que eu precisava para fechar negócio. Consegui meu carro novo sem juros!"</p>
+                        <h4 class="depoimento-nome">Henrique Guerra</h4>
                         <p class="depoimento-objetivo">Conquistou: Veículo</p>
                     </div>
                     <div class="depoimento-card">
-                        <img src="https://via.placeholder.com/100x100?text=Cliente+3" alt="Foto do Cliente">
+                        <img src="img/3.png" alt="Foto do Cliente">
                         <p class="depoimento-texto">"Transparência e agilidade. A equipe cuidou de toda a burocracia e tornou meu sonho da casa própria uma realidade. Sou muito grato por todo o suporte."</p>
-                        <h4 class="depoimento-nome">Fernanda Costa</h4>
+                        <h4 class="depoimento-nome">Gabriele Ramos</h4>
                         <p class="depoimento-objetivo">Conquistou: Imóvel</p>
                     </div>
                 </div>
@@ -249,7 +225,7 @@
             <div class="container especialista-content">
                 <div class="especialista-image">
                     <div class="image-background-shape"></div>
-                    <img src="img/eu1.jpeg" alt="Especialista Ricardo Alves">
+                    <img src="img/eu1.jpeg" alt="Especialista Gustavo Reis">
                 </div>
                 <div class="especialista-text">
                     <h3>Conheça quem está por trás do seu sonho</h3>
