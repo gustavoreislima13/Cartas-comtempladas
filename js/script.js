@@ -2,29 +2,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA DE ANIMAÇÃO AO ROLAR ---
     const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    if (elementsToAnimate.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Opcional: para a animação acontecer só uma vez
+                }
+            });
+        }, {
+            threshold: 0.1
         });
-    }, {
-        threshold: 0.1
-    });
-    elementsToAnimate.forEach(element => {
-        observer.observe(element);
-    });
+        elementsToAnimate.forEach(element => {
+            observer.observe(element);
+        });
+    }
+
 
     // --- LÓGICA PARA OS FILTROS DAS CARTAS DE CRÉDITO ---
-    
     const filtroTipo = document.getElementById('filtro-tipo');
     const filtroValor = document.getElementById('filtro-valor');
     const gridCartas = document.getElementById('cartas-disponiveis-grid');
-    const todasAsCartas = gridCartas.querySelectorAll('.carta-card');
     const mensagemNenhumaCarta = document.getElementById('nenhuma-carta');
-
-    // Verifica se os elementos de filtro existem antes de adicionar os listeners
+    
+    // Verifica se os elementos de filtro existem na página antes de adicionar os listeners
     if (filtroTipo && filtroValor && gridCartas) {
+        const todasAsCartas = gridCartas.querySelectorAll('.carta-card');
+
         function aplicarFiltros() {
             const tipoSelecionado = filtroTipo.value;
             const valorSelecionado = filtroValor.value;
@@ -32,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             todasAsCartas.forEach(carta => {
                 const tipoDaCarta = carta.dataset.tipo;
-                const valorDaCarta = parseInt(carta.dataset.valor);
+                const valorDaCarta = parseInt(carta.dataset.valor, 10);
 
                 const tipoMatch = (tipoSelecionado === 'todos') || (tipoDaCarta === tipoSelecionado);
 
@@ -68,5 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Garante que o estado inicial esteja correto
         aplicarFiltros();
+    }
+    
+    // --- LÓGICA PARA O FORMULÁRIO DE LOGIN (FRONT-END) ---
+    // Nota: Uma funcionalidade de login completa requer um backend para validar os usuários.
+    // Este código apenas simula a submissão do formulário.
+    const loginForm = document.getElementById('login-form');
+    if(loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio real do formulário
+            const email = document.getElementById('email').value;
+            
+            // Aqui você adicionaria a lógica para enviar os dados para um servidor (backend)
+            // e aguardar a resposta para autenticar o usuário.
+            
+            alert(`Tentativa de login com o email: ${email}. Funcionalidade de backend não implementada.`);
+            
+            // Exemplo: Redirecionar para uma página de painel após login (simulação)
+            // window.location.href = '/dashboard.html'; 
+        });
     }
 });

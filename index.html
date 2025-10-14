@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sua Financeira - A Chave para sua Conquista</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1 class="logo">SuaLogo</h1>
+            <h1 class="logo">GLR</h1>
             <nav>
                 <a href="#sobre-nos">A Empresa</a>
+                <a href="#cartas-disponiveis">Cartas de Crédito</a>
                 <a href="#como-funciona">Como Funciona</a>
                 <a href="#vantagens">Vantagens</a>
                 <a href="login.html" class="cta-button-small">Login</a>
@@ -30,7 +31,7 @@
                     <a href="#como-funciona" class="cta-button">Entenda Como Funciona</a>
                 </div>
                 <div class="hero-image">
-                    <img src="https://via.placeholder.com/500x550?text=Consultor" alt="Consultor Financeiro">
+                    <img src="img/eu3.jpeg" alt="Consultor Financeiro">
                 </div>
             </div>
         </section>
@@ -87,17 +88,158 @@
                     <div class="vantagem-card">
                         <i class="fa-solid fa-rocket"></i>
                         <h3>Agilidade e Rapidez</h3>
-                        <p>Esqueça a incerteza dos sorteios ou a necessidade de dar lances altos. Com a carta contemplada, o acesso ao crédito é praticamente imediato após a transferência, permitindo que você aproveite oportunidades de mercado sem demora.</p>
+                        <p>Esqueça a incerteza dos sorteios ou a necessidade de dar lances altos. Com a carta contemplada, o acesso ao crédito é praticamente imediato após a transferência.</p>
                     </div>
                     <div class="vantagem-card">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
                         <h3>Economia Inteligente</h3>
-                        <p>Diferente dos financiamentos, o consórcio não tem juros, apenas uma taxa de administração muito menor. Isso resulta em uma economia significativa ao final do plano, tornando seu investimento mais inteligente.</p>
+                        <p>Diferente dos financiamentos, o consórcio não tem juros, apenas uma taxa de administração muito menor. Isso resulta em uma economia significativa ao final do plano.</p>
                     </div>
                     <div class="vantagem-card">
                         <i class="fa-solid fa-shield-halved"></i>
                         <h3>Segurança Jurídica Total</h3>
-                        <p>Nossa operação é 100% amparada pela Lei dos Consórcios. Todo o processo é documentado e validado pela administradora, oferecendo a mesma segurança de quem adere a um consórcio desde o início.</p>
+                        <p>Nossa operação é 100% amparada pela Lei dos Consórcios. Todo o processo é documentado e validado pela administradora, oferecendo total segurança.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cartas-disponiveis" class="animate-on-scroll">
+            <div class="container">
+                <h2>Nossas Cartas de Crédito Disponíveis</h2>
+                <p class="section-subtitle">Encontre a opção ideal para a sua conquista. Use os filtros para refinar sua busca.</p>
+
+                <div class="filtros">
+                    <div class="filtro-grupo">
+                        <label for="filtro-tipo">Tipo de Bem:</label>
+                        <select id="filtro-tipo">
+                            <option value="todos">Todos</option>
+                            <option value="imovel">Imóvel</option>
+                            <option value="veiculo">Veículo</option>
+                        </select>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="filtro-valor">Faixa de Valor:</label>
+                        <select id="filtro-valor">
+                            <option value="todos">Qualquer Valor</option>
+                            <option value="0-100000">Até R$100.000</option>
+                            <option value="100001-200000">R$100.001 a R$200.000</option>
+                            <option value="200001-500000">R$200.001 a R$500.000</option>
+                            <option value="500001-1000000">Acima de R$500.000</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="cartas-disponiveis-grid">
+                    <div class="carta-card" data-tipo="veiculo" data-valor="85000">
+                        <div class="carta-card-header">
+                            <i class="fa-solid fa-car"></i>
+                            <h3>Veículo</h3>
+                        </div>
+                        <p class="credito">Crédito: R$ 85.000,00</p>
+                        <div class="carta-card-body">
+                            <p><strong>Entrada:</strong> R$ 25.000,00</p>
+                            <p><strong>Parcelas:</strong> 72x R$ 1.150,00</p>
+                        </div>
+                        <a href="#contato" class="cta-button">Tenho Interesse</a>
+                    </div>
+                    <div class="carta-card" data-tipo="imovel" data-valor="350000">
+                        <div class="carta-card-header">
+                            <i class="fa-solid fa-house"></i>
+                            <h3>Imóvel</h3>
+                        </div>
+                        <p class="credito">Crédito: R$ 350.000,00</p>
+                        <div class="carta-card-body">
+                            <p><strong>Entrada:</strong> R$ 70.000,00</p>
+                            <p><strong>Parcelas:</strong> 180x R$ 2.400,00</p>
+                        </div>
+                        <a href="#contato" class="cta-button">Tenho Interesse</a>
+                    </div>
+                    <div class="carta-card" data-tipo="imovel" data-valor="600000">
+                        <div class="carta-card-header">
+                            <i class="fa-solid fa-house"></i>
+                            <h3>Imóvel</h3>
+                        </div>
+                        <p class="credito">Crédito: R$ 600.000,00</p>
+                        <div class="carta-card-body">
+                            <p><strong>Entrada:</strong> R$ 120.000,00</p>
+                            <p><strong>Parcelas:</strong> 200x R$ 3.950,00</p>
+                        </div>
+                        <a href="#contato" class="cta-button">Tenho Interesse</a>
+                    </div>
+                     <div class="carta-card" data-tipo="veiculo" data-valor="150000">
+                        <div class="carta-card-header">
+                            <i class="fa-solid fa-car"></i>
+                            <h3>Veículo</h3>
+                        </div>
+                        <p class="credito">Crédito: R$ 150.000,00</p>
+                        <div class="carta-card-body">
+                            <p><strong>Entrada:</strong> R$ 45.000,00</p>
+                            <p><strong>Parcelas:</strong> 80x R$ 1.980,00</p>
+                        </div>
+                        <a href="#contato" class="cta-button">Tenho Interesse</a>
+                    </div>
+                </div>
+                <p id="nenhuma-carta" class="hidden">Nenhuma carta de crédito encontrada com os filtros selecionados.</p>
+            </div>
+        </section>
+
+        <section id="depoimentos" class="animate-on-scroll">
+            <div class="container">
+                <h2>O que nossos clientes dizem</h2>
+                <div class="depoimentos-grid">
+                    <div class="depoimento-card">
+                        <img src="https://via.placeholder.com/100x100?text=Cliente+1" alt="Foto do Cliente">
+                        <p class="depoimento-texto">"O processo foi muito mais rápido do que eu imaginava. Em menos de 15 dias, eu estava com o crédito na mão para comprar meu apartamento. Recomendo demais!"</p>
+                        <h4 class="depoimento-nome">Juliana Silva</h4>
+                        <p class="depoimento-objetivo">Conquistou: Imóvel</p>
+                    </div>
+                    <div class="depoimento-card">
+                        <img src="https://via.placeholder.com/100x100?text=Cliente+2" alt="Foto do Cliente">
+                        <p class="depoimento-texto">"A assessoria do Ricardo foi fundamental. Ele me explicou cada detalhe e me deu a segurança que eu precisava para fechar negócio. Consegui meu carro novo sem juros!"</p>
+                        <h4 class="depoimento-nome">Marcos Andrade</h4>
+                        <p class="depoimento-objetivo">Conquistou: Veículo</p>
+                    </div>
+                    <div class="depoimento-card">
+                        <img src="https://via.placeholder.com/100x100?text=Cliente+3" alt="Foto do Cliente">
+                        <p class="depoimento-texto">"Transparência e agilidade. A equipe cuidou de toda a burocracia e tornou meu sonho da casa própria uma realidade. Sou muito grato por todo o suporte."</p>
+                        <h4 class="depoimento-nome">Fernanda Costa</h4>
+                        <p class="depoimento-objetivo">Conquistou: Imóvel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="animate-on-scroll">
+            <div class="container">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-pergunta">
+                            É seguro comprar uma carta de crédito contemplada?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-resposta">
+                            <p>Sim, é 100% seguro. A operação é prevista na Lei dos Consórcios (Lei nº 11.795/2008) e todo o processo de transferência de titularidade é feito diretamente com a administradora do consórcio, garantindo total transparência e segurança jurídica para ambas as partes.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-pergunta">
+                            Por que alguém venderia uma carta já contemplada?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-resposta">
+                            <p>Existem diversos motivos. A pessoa pode ter desistido da compra do bem, pode precisar do dinheiro da entrada para outra finalidade ou simplesmente mudou de planos. A venda da carta é uma forma de recuperar o valor investido rapidamente.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-pergunta">
+                            Posso usar a carta para comprar um bem de maior valor?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-resposta">
+                            <p>Sim. Você pode utilizar a carta de crédito como parte do pagamento e complementar o valor restante com recursos próprios. A carta funciona como um pagamento à vista, o que lhe dá grande poder de negociação.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,13 +249,13 @@
             <div class="container especialista-content">
                 <div class="especialista-image">
                     <div class="image-background-shape"></div>
-                    <img src="https://via.placeholder.com/400x400?text=Ricardo+Alves" alt="Especialista Ricardo Alves">
+                    <img src="img/eu1.jpeg" alt="Especialista Ricardo Alves">
                 </div>
                 <div class="especialista-text">
                     <h3>Conheça quem está por trás do seu sonho</h3>
-                    <h2>Ricardo Alves</h2>
+                    <h2>Gustavo Reis</h2>
                     <h4>Especialista em Crédito e Consórcios</h4>
-                    <p>Com mais de 10 anos de experiência no mercado financeiro, minha missão é desmistificar o acesso ao crédito. Eu acredito que todos podem alcançar seus objetivos com o planejamento correto e as ferramentas certas. Minha equipe e eu estamos aqui para ser o seu guia nessa jornada.</p>
+                    <p>Com mais de 5 anos de experiência no mercado financeiro, minha missão é desmistificar o acesso ao crédito. Eu acredito que todos podem alcançar seus objetivos com o planejamento correto e as ferramentas certas. Minha equipe e eu estamos aqui para ser o seu guia nessa jornada.</p>
                 </div>
             </div>
         </section>
@@ -129,11 +271,11 @@
 
     <footer>
         <div class="container">
-            <h1 class="logo">SuaLogo</h1>
+            <h1 class="logo">GLR</h1>
             <p>&copy; 2025 Sua Financeira. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
