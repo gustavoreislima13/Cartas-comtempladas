@@ -126,6 +126,14 @@ section {
     background-color: #e7ff5c;
 }
 
+.cta-button:disabled,
+.cta-button[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+}
+
 .cta-button.ghost {
     background: transparent;
     color: var(--cor-destaque);

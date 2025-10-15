@@ -1,5 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- CONTATOS CENTRALIZADOS ---
+    const { whatsapp: whatsappDataset, phone: phoneDataset } = document.body.dataset;
+
+    if (whatsappDataset) {
+        const whatsappNumber = whatsappDataset.replace(/\D/g, '');
+        const baseWhatsappUrl = `https://wa.me/${whatsappNumber}`;
+
+        document.querySelectorAll('[data-whatsapp-link]').forEach(link => {
+            const mensagem = link.dataset.whatsappMessage;
+            const url = mensagem ? `${baseWhatsappUrl}?text=${encodeURIComponent(mensagem)}` : baseWhatsappUrl;
+            link.setAttribute('href', url);
+        });
+    }
+
+    if (phoneDataset) {
+        document.querySelectorAll('[data-phone-link]').forEach(link => {
+            link.setAttribute('href', `tel:${phoneDataset}`);
+        });
+    }
+
     // --- MENU RESPONSIVO ---
     const menuToggle = document.querySelector('.menu-toggle');
     const primaryNav = document.getElementById('primary-navigation');

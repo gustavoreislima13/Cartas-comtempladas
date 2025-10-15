@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apenas executa se estiver na página de cartas
     const gridCartasPage = document.getElementById('cartas-page-grid');
     if (gridCartasPage) {
+        const { whatsapp: whatsappDataset } = document.body.dataset;
+        const numeroWhatsapp = (whatsappDataset || '5599999999999').replace(/\D/g, '');
+        const btnDownload = document.getElementById('btn-download-pdf');
+        let cartasFiltradasAtual = [];
 
         // --- DADOS COMPLETOS DAS CARTAS (PDFs + Originais) ---
         const cartasData = [
@@ -175,8 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const maiorCreditoEl = document.getElementById('maior-credito');
 
         function formatarMoeda(valor) {
-            if (isNaN(valor)) return 'R$ 0,00';
-            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+            const valorNumerico = Number(valor);
+            if (Number.isNaN(valorNumerico)) return 'R$ 0,00';
+            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valorNumerico);
         }
 
         function calcularNovaEntrada(entradaOriginal) {
@@ -189,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
         function criarCardHTML(carta) {
             const iconClass = carta.tipo === 'imovel' ? 'fa-house' : (carta.tipo === 'veiculo' ? 'fa-car' : 'fa-briefcase');
             const novaEntrada = calcularNovaEntrada(carta.entrada);
-            const numeroWhatsapp = "5599999999999"; // <-- COLOQUE SEU NÚMERO DE WHATSAPP AQUI
             const textoWhatsapp = `Olá! Tenho interesse na carta de crédito de ${formatarMoeda(carta.valor)} para ${carta.tipo} (Adm: ${carta.administradora}).`;
             const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(textoWhatsapp)}`;
 
@@ -233,6 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            cartasFiltradasAtual = cartasFiltradas;
+
             if (totalCartasEl) {
                 totalCartasEl.textContent = cartasFiltradas.length > 0 ? `+${cartasFiltradas.length}` : '0';
             }
@@ -246,6 +252,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (maiorCreditoEl) {
                 const maiorCredito = cartasFiltradas.length ? Math.max(...cartasFiltradas.map(carta => carta.valor)) : 0;
                 maiorCreditoEl.textContent = cartasFiltradas.length ? formatarMoeda(maiorCredito) : 'R$ 0';
+            }
+
+            if (btnDownload) {
+                const semCartas = cartasFiltradas.length === 0;
+                btnDownload.toggleAttribute('disabled', semCartas);
+                btnDownload.setAttribute('aria-disabled', semCartas ? 'true' : 'false');
+                btnDownload.title = semCartas
+                    ? 'Ajuste os filtros para gerar o PDF das cartas disponíveis.'
+                    : 'Gerar PDF com as cartas filtradas.';
             }
 
             if (cartasFiltradas.length > 0) {
@@ -271,10 +286,61 @@ document.addEventListener('DOMContentLoaded', () => {
             filtro.addEventListener('change', aplicarFiltrosEOrdenar);
         });
 
-        const btnDownload = document.getElementById('btn-download-pdf');
+        function gerarPdfCartas(cartasParaExportar) {
+            const jsPdfNamespace = window.jspdf;
+            if (!jsPdfNamespace || !jsPdfNamespace.jsPDF) {
+                console.error('Biblioteca jsPDF não carregada.');
+                alert('Não foi possível gerar o PDF agora. Tente novamente em instantes.');
+                return;
+            }
+
+            const doc = new jsPdfNamespace.jsPDF();
+            doc.setFontSize(16);
+            doc.text('Cartas de Crédito Disponíveis', 105, 15, { align: 'center' });
+            doc.setFontSize(11);
+
+            if (!cartasParaExportar.length) {
+                doc.text('Nenhuma carta disponível para os filtros selecionados.', 14, 30);
+            } else {
+                let posicaoY = 30;
+                const dataHoraGeracao = new Intl.DateTimeFormat('pt-BR', {
+                    dateStyle: 'short',
+                    timeStyle: 'short'
+                }).format(new Date());
+
+                cartasParaExportar.forEach((carta, index) => {
+                    const linhas = [
+                        `${index + 1}. ${carta.tipo.charAt(0).toUpperCase() + carta.tipo.slice(1)} • ${carta.administradora}`,
+                        `Crédito: ${formatarMoeda(carta.valor)} | Entrada sugerida: ${formatarMoeda(calcularNovaEntrada(carta.entrada))}`,
+                        `Parcelas: ${carta.parcelasTexto}`
+                    ];
+
+                    linhas.forEach(linha => {
+                        if (posicaoY > 270) {
+                            doc.addPage();
+                            posicaoY = 20;
+                        }
+                        doc.text(linha, 14, posicaoY);
+                        posicaoY += 7;
+                    });
+
+                    posicaoY += 3;
+                });
+
+                doc.setFontSize(9);
+                doc.text(`Gerado em ${dataHoraGeracao}`, 105, 290, { align: 'center' });
+            }
+
+            doc.save('cartas-de-credito.pdf');
+        }
+
         if (btnDownload) {
             btnDownload.addEventListener('click', () => {
-                // Lógica de download do PDF (mantida como antes)
+                if (!cartasFiltradasAtual.length) {
+                    alert('Nenhuma carta disponível com os filtros atuais. Ajuste os filtros para gerar o PDF.');
+                    return;
+                }
+                gerarPdfCartas(cartasFiltradasAtual);
             });
         }
 
