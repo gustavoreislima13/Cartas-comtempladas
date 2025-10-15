@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cartas de crédito contempladas, consultoria financeira e atendimento especializado para você conquistar seu imóvel ou veículo.">
     <title>Sua Financeira - A Chave para sua Conquista</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="index.html" class="logo">GLR</a>
-            <nav>
-                <a href="#sobre-nos">A Empresa</a>
-                <a href="#como-funciona">Como Funciona</a>
-                <a href="#vantagens">Vantagens</a>
-                <a href="cartas.html">Cartas de Crédito</a>
-                <a href="login.html" class="cta-button-small">Login</a>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo" aria-label="Início da GLR Financeira">GLR</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="sr-only">Abrir menu</span>
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav id="primary-navigation" class="primary-nav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#sobre-nos">A Empresa</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#vantagens">Vantagens</a></li>
+                    <li><a href="cartas.html">Cartas de Crédito</a></li>
+                    <li><a href="#contato" class="cta-button-small">Fale Conosco</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -27,11 +34,28 @@
                 <div class="hero-text">
                     <p class="subtitle">CRÉDITO DESCOMPLICADO</p>
                     <h1>A chave para a sua conquista está aqui.</h1>
-                    <p>Adquira seu imóvel ou veículo sem juros abusivos e sem esperar por sorteios. Use o poder da carta de crédito contemplada.</p>
-                    <a href="#como-funciona" class="cta-button">Entenda Como Funciona</a>
+                    <p>Adquira seu imóvel ou veículo sem juros abusivos e sem esperar por sorteios. Nossa consultoria acompanha cada etapa para você utilizar o poder da carta de crédito contemplada com segurança.</p>
+                    <div class="hero-actions">
+                        <a href="#como-funciona" class="cta-button">Entenda Como Funciona</a>
+                        <a href="#contato" class="cta-button ghost">Falar com um especialista</a>
+                    </div>
+                    <div class="hero-stats" aria-label="Indicadores de resultados">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">+350</span>
+                            <span class="hero-stat-label">Clientes assessorados</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">12 dias</span>
+                            <span class="hero-stat-label">Tempo médio de liberação</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">98%</span>
+                            <span class="hero-stat-label">Satisfação dos clientes</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="hero-image">
-                    <img src="img/eu3.jpeg" alt="Consultor Financeiro">
+                    <img src="img/eu3.jpeg" alt="Consultor Financeiro" loading="lazy">
                 </div>
             </div>
         </section>
@@ -42,9 +66,14 @@
                     <h2>Nascemos para descomplicar seus sonhos.</h2>
                     <p>A Sua Financeira não é apenas uma intermediadora de crédito, somos uma consultoria especializada em encontrar o caminho mais rápido e econômico para seus objetivos. Com anos de experiência no mercado, nossa missão é oferecer transparência, segurança e as melhores oportunidades em cartas de crédito contempladas, consórcios e financiamentos.</p>
                     <p>Nossa equipe é formada por especialistas que entendem as nuances do mercado e estão prontos para oferecer uma assessoria completa, garantindo que cada etapa do processo seja clara e segura para você.</p>
+                    <ul class="sobre-nos-lista">
+                        <li><i class="fa-solid fa-circle-check"></i> Consultoria personalizada para crédito imobiliário, automotivo e serviços.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Avaliação documental e negociação direta com as administradoras.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Acompanhamento pós-liberação para maximizar o seu poder de compra.</li>
+                    </ul>
                 </div>
                 <div class="sobre-nos-image">
-                    <img src="https://via.placeholder.com/500x400?text=Nosso+Escritório" alt="Escritório da Sua Financeira">
+                    <img src="https://via.placeholder.com/500x400?text=Nosso+Escrit%C3%B3rio" alt="Escritório da Sua Financeira" loading="lazy">
                 </div>
             </div>
         </section>
@@ -52,26 +81,31 @@
         <section id="como-funciona" class="animate-on-scroll">
             <div class="container">
                 <h2>Como Funciona a Operação de Cartas Contempladas</h2>
-                <div class="timeline">
-                    <div class="timeline-item" data-step="1">
+                <div class="timeline" role="list">
+                    <div class="timeline-item" data-step="1" role="listitem">
                         <div class="timeline-content">
                             <h3>Análise e Escolha</h3>
                             <p>O primeiro passo é entender seu objetivo. Nossa equipe analisa suas necessidades para encontrar uma carta de crédito já contemplada no valor exato que você precisa.</p>
                         </div>
                     </div>
-                    <div class="timeline-item" data-step="2">
+                    <div class="timeline-item" data-step="2" role="listitem">
                         <div class="timeline-content">
                             <h3>Verificação e Segurança</h3>
                             <p>Realizamos uma checagem completa da carta junto à administradora do consórcio, garantindo a autenticidade e a segurança da operação.</p>
+                            <ul class="timeline-list">
+                                <li>Auditoria documental completa;</li>
+                                <li>Validação com a administradora;</li>
+                                <li>Orientação jurídica especializada.</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="timeline-item" data-step="3">
+                    <div class="timeline-item" data-step="3" role="listitem">
                         <div class="timeline-content">
                             <h3>Transferência de Titularidade</h3>
                             <p>Cuidamos de todo o processo burocrático para transferir a titularidade da carta para o seu nome de forma legal e transparente.</p>
                         </div>
                     </div>
-                    <div class="timeline-item" data-step="4">
+                    <div class="timeline-item" data-step="4" role="listitem">
                         <div class="timeline-content">
                             <h3>Liberação e Compra</h3>
                             <p>Com a carta em seu nome, o crédito é liberado para você comprar seu bem à vista, o que lhe dá um enorme poder de negociação.</p>
@@ -165,19 +199,19 @@
                 <h2>O que nossos clientes dizem</h2>
                 <div class="depoimentos-grid">
                     <div class="depoimento-card">
-                        <img src="img/1.png" alt="Foto do Cliente">
+                        <img src="img/1.png" alt="Foto do Cliente" loading="lazy">
                         <p class="depoimento-texto">"O processo foi muito mais rápido do que eu imaginava. Em menos de 15 dias, eu estava com o crédito na mão para comprar meu apartamento. Recomendo demais!"</p>
                         <h4 class="depoimento-nome">Anselmo de Souza</h4>
                         <p class="depoimento-objetivo">Conquistou: Imóvel</p>
                     </div>
                     <div class="depoimento-card">
-                        <img src="img/2.png" alt="Foto do Cliente">
+                        <img src="img/2.png" alt="Foto do Cliente" loading="lazy">
                         <p class="depoimento-texto">"A assessoria do Gustavo foi fundamental. Ele me explicou cada detalhe e me deu a segurança que eu precisava para fechar negócio. Consegui meu carro novo sem juros!"</p>
                         <h4 class="depoimento-nome">Henrique Guerra</h4>
                         <p class="depoimento-objetivo">Conquistou: Veículo</p>
                     </div>
                     <div class="depoimento-card">
-                        <img src="img/3.png" alt="Foto do Cliente">
+                        <img src="img/3.png" alt="Foto do Cliente" loading="lazy">
                         <p class="depoimento-texto">"Transparência e agilidade. A equipe cuidou de toda a burocracia e tornou meu sonho da casa própria uma realidade. Sou muito grato por todo o suporte."</p>
                         <h4 class="depoimento-nome">Gabriele Ramos</h4>
                         <p class="depoimento-objetivo">Conquistou: Imóvel</p>
@@ -225,32 +259,71 @@
             <div class="container especialista-content">
                 <div class="especialista-image">
                     <div class="image-background-shape"></div>
-                    <img src="img/eu1.jpeg" alt="Especialista Gustavo Reis">
+                    <img src="img/eu1.jpeg" alt="Especialista Gustavo Reis" loading="lazy">
                 </div>
                 <div class="especialista-text">
                     <h3>Conheça quem está por trás do seu sonho</h3>
                     <h2>Gustavo Reis</h2>
                     <h4>Especialista em Crédito e Consórcios</h4>
                     <p>Com mais de 5 anos de experiência no mercado financeiro, minha missão é desmistificar o acesso ao crédito. Eu acredito que todos podem alcançar seus objetivos com o planejamento correto e as ferramentas certas. Minha equipe e eu estamos aqui para ser o seu guia nessa jornada.</p>
+                    <div class="especialista-contatos">
+                        <a href="https://wa.me/5599999999999" target="_blank" rel="noopener" class="cta-button">
+                            <i class="fa-brands fa-whatsapp"></i> Conversar pelo WhatsApp
+                        </a>
+                        <a href="tel:+5599999999999" class="cta-button ghost">
+                            <i class="fa-solid fa-phone"></i> Ligar agora
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
-        
+
         <section id="contato" class="animate-on-scroll">
             <div class="container">
                 <h2>Pronto para dar o próximo passo?</h2>
                 <p>Nossa equipe de especialistas está pronta para encontrar a melhor solução para você, sem compromisso.</p>
-                <a href="#" class="cta-button">Fale com um especialista agora</a>
+                <div class="contato-grid">
+                    <div class="contato-card">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>Atendimento humanizado e rápido todos os dias.</p>
+                        <a class="cta-button" href="https://wa.me/5599999999999" target="_blank" rel="noopener">Iniciar conversa</a>
+                    </div>
+                    <div class="contato-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <h3>Telefone</h3>
+                        <p>Segunda a sábado, das 8h às 20h. Estamos prontos para ajudar.</p>
+                        <a class="cta-button ghost" href="tel:+5599999999999">Ligar agora</a>
+                    </div>
+                    <div class="contato-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h3>E-mail</h3>
+                        <p>Envie seus documentos e receba uma análise completa.</p>
+                        <a class="cta-button ghost" href="mailto:contato@suafinanceira.com">Enviar e-mail</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <h1 class="logo">GLR</h1>
-            <p>&copy; 2025 Sua Financeira. Todos os direitos reservados.</p>
+        <div class="container footer-content">
+            <a href="index.html" class="logo">GLR</a>
+            <div class="footer-infos">
+                <p>&copy; 2025 Sua Financeira. Todos os direitos reservados.</p>
+                <p>CNPJ 00.000.000/0001-00 • Atendimento em todo o Brasil</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
         </div>
     </footer>
+
+    <a href="#hero" class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
     <script src="js/script.js"></script>
 </body>

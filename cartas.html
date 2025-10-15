@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lista completa de cartas de crédito contempladas e filtros avançados para encontrar a melhor oportunidade.">
     <title>Sua Financeira - Todas as Cartas de Crédito</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="index.html" class="logo">GLR</a>
-            <nav>
-                <a href="index.html#sobre-nos">A Empresa</a>
-                <a href="cartas.html">Cartas de Crédito</a>
-                <a href="index.html#como-funciona">Como Funciona</a>
-                <a href="index.html#vantagens">Vantagens</a>
-                <a href="login.html" class="cta-button-small">Login</a>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo" aria-label="Início da GLR Financeira">GLR</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="sr-only">Abrir menu</span>
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav id="primary-navigation" class="primary-nav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html#sobre-nos">A Empresa</a></li>
+                    <li><a href="index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="index.html#vantagens">Vantagens</a></li>
+                    <li><a href="cartas.html">Cartas de Crédito</a></li>
+                    <li><a href="index.html#contato" class="cta-button-small">Fale Conosco</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -26,7 +33,22 @@
         <section id="cartas-page">
             <div class="container">
                 <h2>Encontre a Carta de Crédito Perfeita</h2>
-                <p class="section-subtitle">Utilize nossos filtros avançados para encontrar a oportunidade ideal para realizar seu sonho.</p>
+                <p class="section-subtitle">Utilize nossos filtros avançados para encontrar a oportunidade ideal para realizar seu sonho. Todas as cartas são verificadas e atualizadas em tempo real.</p>
+
+                <div class="cartas-metricas">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" id="total-cartas">+0</span>
+                        <span class="hero-stat-label">Cartas disponíveis</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" id="melhor-entrada">R$ 0</span>
+                        <span class="hero-stat-label">Menor entrada</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" id="maior-credito">R$ 0</span>
+                        <span class="hero-stat-label">Maior crédito</span>
+                    </div>
+                </div>
 
                 <div class="filtros filtros-avancados">
                     <div class="filtro-grupo">
@@ -58,9 +80,8 @@
                     </div>
                 </div>
 
-                <div id="cartas-page-grid">
-                    </div>
-                
+                <div id="cartas-page-grid"></div>
+
                 <p id="nenhuma-carta-page" class="hidden">Nenhuma carta de crédito encontrada com os filtros selecionados.</p>
             </div>
         </section>
@@ -68,11 +89,11 @@
         <section id="parceiros" class="animate-on-scroll">
             <div class="container">
                 <h2>Área de Parceiros</h2>
-                <p class="section-subtitle">Acesse a lista completa de nossas cartas disponíveis em formato PDF.</p>
+                <p class="section-subtitle">Acesse a lista completa de nossas cartas disponíveis em formato PDF e compartilhe com seus clientes.</p>
                 <div class="parceiros-content">
                     <i class="fa-solid fa-file-pdf"></i>
                     <h3>Download da Tabela Completa</h3>
-                    <p>Mantenha-se atualizado com todas as nossas oportunidades. Clique no botão abaixo para gerar e baixar o PDF.</p>
+                    <p>Mantenha-se atualizado com todas as nossas oportunidades. Clique no botão abaixo para gerar e baixar o PDF personalizado com o seu logotipo.</p>
                     <button id="btn-download-pdf" class="cta-button">Baixar PDF de Cartas</button>
                 </div>
             </div>
@@ -80,13 +101,25 @@
     </main>
 
     <footer>
-        <div class="container">
+        <div class="container footer-content">
             <a href="index.html" class="logo">GLR</a>
-            <p>&copy; 2025 Sua Financeira. Todos os direitos reservados.</p>
+            <div class="footer-infos">
+                <p>&copy; 2025 Sua Financeira. Todos os direitos reservados.</p>
+                <p>CNPJ 00.000.000/0001-00 • Atendimento em todo o Brasil</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
         </div>
     </footer>
 
+    <a href="#cartas-page" class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script src="js/script.js"></script>
     <script src="js/cartas.js"></script>
-    
 </body>
 </html>

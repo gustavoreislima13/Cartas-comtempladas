@@ -1,5 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- MENU RESPONSIVO ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const primaryNav = document.getElementById('primary-navigation');
+    const pageHeader = document.querySelector('.main-header');
+
+    function closeMenu() {
+        if (primaryNav && primaryNav.classList.contains('is-open')) {
+            primaryNav.classList.remove('is-open');
+            document.body.classList.remove('menu-open');
+            if (menuToggle) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        }
+    }
+
+    if (menuToggle && primaryNav) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = primaryNav.classList.toggle('is-open');
+            document.body.classList.toggle('menu-open', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.querySelector('i')?.classList.toggle('fa-xmark', isOpen);
+            menuToggle.querySelector('i')?.classList.toggle('fa-bars', !isOpen);
+        });
+
+        primaryNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900) {
+                closeMenu();
+            }
+        });
+    }
+
     // --- LÓGICA DE ANIMAÇÃO AO ROLAR ---
     const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
     if (elementsToAnimate.length > 0) {
@@ -19,13 +67,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- HEADER DINÂMICO ---
-    const header = document.querySelector('header');
-    if (header) {
+    if (pageHeader) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+                pageHeader.classList.add('scrolled');
             } else {
-                header.classList.remove('scrolled');
+                pageHeader.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // --- BOTÃO VOLTAR AO TOPO ---
+    const backToTop = document.querySelector('.back-to-top');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
             }
         });
     }
@@ -39,20 +98,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             pergunta.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
+
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
-                        otherItem.querySelector('.faq-resposta').style.maxHeight = '0px';
+                        const otherResposta = otherItem.querySelector('.faq-resposta');
+                        if (otherResposta) {
+                            otherResposta.style.maxHeight = '0px';
+                        }
                     }
                 });
 
                 if (!isActive) {
                     item.classList.add('active');
-                    resposta.style.maxHeight = resposta.scrollHeight + 'px';
+                    if (resposta) {
+                        resposta.style.maxHeight = resposta.scrollHeight + 'px';
+                    }
                 } else {
                     item.classList.remove('active');
-                    resposta.style.maxHeight = '0px';
+                    if (resposta) {
+                        resposta.style.maxHeight = '0px';
+                    }
                 }
             });
         });
@@ -62,8 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtroTipoIndex = document.getElementById('filtro-tipo');
     const filtroValorIndex = document.getElementById('filtro-valor');
     const gridCartasIndex = document.getElementById('cartas-disponiveis-grid');
-    
-    // VERIFICA SE ESTAMOS NA PÁGINA INICIAL (pela existência do grid específico)
+
     if (filtroTipoIndex && filtroValorIndex && gridCartasIndex) {
         const todasAsCartas = gridCartasIndex.querySelectorAll('.carta-card');
         const mensagemNenhumaCarta = document.getElementById('nenhuma-carta');
@@ -89,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         valorMatch = true;
                     }
                 }
-                
+
                 if (tipoMatch && valorMatch) {
                     carta.style.display = 'flex';
                     cartasVisiveis++;
@@ -109,8 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         filtroTipoIndex.addEventListener('change', aplicarFiltrosIndex);
         filtroValorIndex.addEventListener('change', aplicarFiltrosIndex);
-
-        // Garante que o estado inicial esteja correto ao carregar a página
         aplicarFiltrosIndex();
     }
 });
