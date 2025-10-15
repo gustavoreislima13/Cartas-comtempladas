@@ -192,12 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const numeroWhatsapp = "5599999999999"; // <-- COLOQUE SEU NÚMERO DE WHATSAPP AQUI
             const textoWhatsapp = `Olá! Tenho interesse na carta de crédito de ${formatarMoeda(carta.valor)} para ${carta.tipo} (Adm: ${carta.administradora}).`;
             const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(textoWhatsapp)}`;
+            const tipoFormatado = carta.tipo.charAt(0).toUpperCase() + carta.tipo.slice(1);
+            const descricaoCarta = `Carta ${tipoFormatado} de ${formatarMoeda(carta.valor)} administrada por ${carta.administradora}`;
 
             return `
-                <div class="carta-card">
+                <article class="carta-card" role="listitem" aria-label="${descricaoCarta}">
                     <div class="carta-card-header">
                         <i class="fa-solid ${iconClass}"></i>
-                        <h3>${carta.tipo.charAt(0).toUpperCase() + carta.tipo.slice(1)}</h3>
+                        <h3>${tipoFormatado}</h3>
                     </div>
                     <div class="carta-card-body">
                         <p class="credito">Crédito: <strong>${formatarMoeda(carta.valor)}</strong></p>
@@ -206,13 +208,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="administradora"><small>Adm: ${carta.administradora}</small></p>
                     </div>
                     <a href="${linkWhatsapp}" class="cta-button" target="_blank">Tenho Interesse</a>
-                </div>
+                </article>
             `;
         }
         
         let cartasFiltradasAtuais = [];
 
         function aplicarFiltrosEOrdenar() {
+            gridCartasPage.setAttribute('aria-busy', 'true');
             const tipo = filtroTipo.value;
             const valorMax = parseInt(filtroValor.value, 10);
             const parcelaMax = parseInt(filtroParcela.value, 10);
@@ -255,10 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cartasFiltradas.length > 0) {
                 gridCartasPage.innerHTML = cartasFiltradas.map(criarCardHTML).join('');
                 mensagemNenhumaCarta?.classList.add('hidden');
+                mensagemNenhumaCarta?.setAttribute('aria-hidden', 'true');
             } else {
                 gridCartasPage.innerHTML = '';
                 mensagemNenhumaCarta?.classList.remove('hidden');
+                mensagemNenhumaCarta?.setAttribute('aria-hidden', 'false');
             }
+
+            gridCartasPage.setAttribute('aria-busy', 'false');
         }
 
         filtroValor.addEventListener('input', () => {

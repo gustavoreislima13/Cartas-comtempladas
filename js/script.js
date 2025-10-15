@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const valorSelecionado = filtroValorIndex.value;
             let cartasVisiveis = 0;
 
+            gridCartasIndex.setAttribute('aria-busy', 'true');
             todasAsCartas.forEach(carta => {
                 const tipoDaCarta = carta.dataset.tipo;
                 const valorDaCarta = parseInt(carta.dataset.valor, 10);
@@ -157,19 +158,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (tipoMatch && valorMatch) {
                     carta.style.display = 'flex';
+                    carta.setAttribute('aria-hidden', 'false');
                     cartasVisiveis++;
                 } else {
                     carta.style.display = 'none';
+                    carta.setAttribute('aria-hidden', 'true');
                 }
             });
 
             if (mensagemNenhumaCarta) {
                  if (cartasVisiveis === 0) {
                     mensagemNenhumaCarta.classList.remove('hidden');
+                    mensagemNenhumaCarta.setAttribute('aria-hidden', 'false');
                 } else {
                     mensagemNenhumaCarta.classList.add('hidden');
+                    mensagemNenhumaCarta.setAttribute('aria-hidden', 'true');
                 }
             }
+
+            gridCartasIndex.setAttribute('aria-busy', 'false');
         }
 
         filtroTipoIndex.addEventListener('change', aplicarFiltrosIndex);

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
     <span class="side-identity" aria-hidden="true">GLR FINANCEIRA</span>
 
     <header class="main-header">
@@ -30,7 +31,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal">
         <section id="hero">
             <div class="container hero-content">
                 <div class="hero-text">
@@ -221,8 +222,8 @@
                     <span class="badge badge-muted">ESCOLHA A CARTA QUE VOCÊ VÊ</span>
                     <h2>Cartas prontas para acelerar sua conquista.</h2>
                 </div>
-                <div id="cartas-disponiveis-grid" class="cartas-grid">
-                    <article class="carta-card" data-tipo="imovel" data-valor="450000">
+                <div id="cartas-disponiveis-grid" class="cartas-grid" role="list" aria-live="polite" aria-busy="false">
+                    <article class="carta-card" data-tipo="imovel" data-valor="450000" role="listitem">
                         <header>
                             <span class="chip">Imóvel</span>
                             <h3>Crédito de R$ 450.000</h3>
@@ -234,7 +235,7 @@
                         </ul>
                         <a href="cartas.html" class="cta-inline">Ver detalhes</a>
                     </article>
-                    <article class="carta-card" data-tipo="veiculo" data-valor="180000">
+                    <article class="carta-card" data-tipo="veiculo" data-valor="180000" role="listitem">
                         <header>
                             <span class="chip">Veículos</span>
                             <h3>Crédito de R$ 180.000</h3>
@@ -246,7 +247,7 @@
                         </ul>
                         <a href="cartas.html" class="cta-inline">Ver detalhes</a>
                     </article>
-                    <article class="carta-card" data-tipo="servico" data-valor="120000">
+                    <article class="carta-card" data-tipo="servico" data-valor="120000" role="listitem">
                         <header>
                             <span class="chip">Serviços</span>
                             <h3>Crédito de R$ 120.000</h3>
@@ -259,7 +260,7 @@
                         <a href="cartas.html" class="cta-inline">Ver detalhes</a>
                     </article>
                 </div>
-                <p id="nenhuma-carta" class="hidden">Nenhuma carta encontrada com os filtros selecionados.</p>
+                <p id="nenhuma-carta" class="hidden" role="status" aria-live="polite" aria-hidden="true">Nenhuma carta encontrada com os filtros selecionados.</p>
             </div>
         </section>
 

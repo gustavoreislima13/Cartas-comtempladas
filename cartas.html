@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
     <span class="side-identity" aria-hidden="true">GLR FINANCEIRA</span>
 
     <header class="main-header">
@@ -31,22 +32,22 @@
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal">
         <section id="cartas-page">
             <div class="container">
                 <h2>Encontre a Carta de Crédito Perfeita</h2>
                 <p class="section-subtitle">Utilize os filtros avançados para encontrar a oportunidade ideal e acelerar sua conquista. Todas as cartas são verificadas e atualizadas em tempo real.</p>
 
                 <div class="cartas-metricas">
-                    <div class="hero-stat">
+                    <div class="hero-stat" role="status" aria-live="polite">
                         <span class="hero-stat-number" id="total-cartas">+0</span>
                         <span class="hero-stat-label">Cartas disponíveis</span>
                     </div>
-                    <div class="hero-stat">
+                    <div class="hero-stat" role="status" aria-live="polite">
                         <span class="hero-stat-number" id="melhor-entrada">R$ 0</span>
                         <span class="hero-stat-label">Menor entrada</span>
                     </div>
-                    <div class="hero-stat">
+                    <div class="hero-stat" role="status" aria-live="polite">
                         <span class="hero-stat-number" id="maior-credito">R$ 0</span>
                         <span class="hero-stat-label">Maior crédito</span>
                     </div>
@@ -82,9 +83,9 @@
                     </div>
                 </div>
 
-                <div id="cartas-page-grid"></div>
+                <div id="cartas-page-grid" role="list" aria-live="polite" aria-busy="false"></div>
 
-                <p id="nenhuma-carta-page" class="hidden">Nenhuma carta de crédito encontrada com os filtros selecionados.</p>
+                <p id="nenhuma-carta-page" class="hidden" role="status" aria-live="polite" aria-hidden="true">Nenhuma carta de crédito encontrada com os filtros selecionados.</p>
             </div>
         </section>
 
