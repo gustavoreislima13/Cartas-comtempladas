@@ -170,6 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const parcelaSelecionada = document.getElementById('parcela-selecionada');
         const filtroOrdenar = document.getElementById('filtro-ordenar');
         const mensagemNenhumaCarta = document.getElementById('nenhuma-carta-page');
+        const totalCartasEl = document.getElementById('total-cartas');
+        const melhorEntradaEl = document.getElementById('melhor-entrada');
+        const maiorCreditoEl = document.getElementById('maior-credito');
 
         function formatarMoeda(valor) {
             if (isNaN(valor)) return 'R$ 0,00';
@@ -186,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function criarCardHTML(carta) {
             const iconClass = carta.tipo === 'imovel' ? 'fa-house' : (carta.tipo === 'veiculo' ? 'fa-car' : 'fa-briefcase');
             const novaEntrada = calcularNovaEntrada(carta.entrada);
-            const numeroWhatsapp = "5511912345678"; // <-- COLOQUE SEU NÚMERO DE WHATSAPP AQUI
+            const numeroWhatsapp = "5599999999999"; // <-- COLOQUE SEU NÚMERO DE WHATSAPP AQUI
             const textoWhatsapp = `Olá! Tenho interesse na carta de crédito de ${formatarMoeda(carta.valor)} para ${carta.tipo} (Adm: ${carta.administradora}).`;
             const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(textoWhatsapp)}`;
 
@@ -218,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const parcelaMatch = carta.parcela <= parcelaMax;
                 return tipoMatch && valorMatch && parcelaMatch;
             });
-            
+
             const ordem = filtroOrdenar.value;
             cartasFiltradas.sort((a, b) => {
                 const entradaA = calcularNovaEntrada(a.entrada);
@@ -230,12 +233,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            if (totalCartasEl) {
+                totalCartasEl.textContent = cartasFiltradas.length > 0 ? `+${cartasFiltradas.length}` : '0';
+            }
+
+            if (melhorEntradaEl) {
+                const entradasAtualizadas = cartasFiltradas.map(carta => calcularNovaEntrada(carta.entrada));
+                const menorEntrada = entradasAtualizadas.length ? Math.min(...entradasAtualizadas) : 0;
+                melhorEntradaEl.textContent = entradasAtualizadas.length ? formatarMoeda(menorEntrada) : 'R$ 0';
+            }
+
+            if (maiorCreditoEl) {
+                const maiorCredito = cartasFiltradas.length ? Math.max(...cartasFiltradas.map(carta => carta.valor)) : 0;
+                maiorCreditoEl.textContent = cartasFiltradas.length ? formatarMoeda(maiorCredito) : 'R$ 0';
+            }
+
             if (cartasFiltradas.length > 0) {
                 gridCartasPage.innerHTML = cartasFiltradas.map(criarCardHTML).join('');
-                mensagemNenhumaCarta.classList.add('hidden');
+                mensagemNenhumaCarta?.classList.add('hidden');
             } else {
                 gridCartasPage.innerHTML = '';
-                mensagemNenhumaCarta.classList.remove('hidden');
+                mensagemNenhumaCarta?.classList.remove('hidden');
             }
         }
 
